@@ -14,6 +14,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.google.gson.Gson;
 import com.shopping.daofactory.ShoppingCartFactory;
 import com.shopping.orm.UserOrm;
 import com.shopping.to.ProductTo;
@@ -138,15 +139,16 @@ public class Product {
 	
 	//PRODUCT Search By Brand id
     @POST
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Consumes(MediaType.APPLICATION_JSON)
     @Path("/searchByBrand")
     public Response searchByBrand(@QueryParam("brandId") int brandId,@QueryParam("pageNumber") int pageNumber,
                     @QueryParam("pageSize") int pageSize,@Context HttpServletRequest request) {
+    		
             try {
                     Collection<String> productTo = new ArrayList<String>();
                     productTo = ShoppingCartFactory.getProductDao().searchByBrand(brandId, pageNumber, pageSize);
-                    return Response.status(201).entity(productTo).build();
+                    return Response.status(201).entity(new Gson().toJson(productTo)).build();
             } catch (Exception  e) {
                     e.printStackTrace();
                     String error = "Unable to Find Record";
@@ -156,15 +158,15 @@ public class Product {
     
 	//PRODUCT Search By Category id
     @POST
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Consumes(MediaType.APPLICATION_JSON)
     @Path("/searchByCategory")
     public Response searchByCategory(@QueryParam("categoryId") int categoryId,@QueryParam("pageNumber") int pageNumber,
                     @QueryParam("pageSize") int pageSize,@Context HttpServletRequest request) {
             try {
                     Collection<String> productTo = new ArrayList<String>();
                     productTo = ShoppingCartFactory.getProductDao().searchByCategory(categoryId, pageNumber, pageSize);
-                    return Response.status(201).entity(productTo).build();
+                    return Response.status(201).entity(new Gson().toJson(productTo)).build();
             } catch (Exception  e) {
                     e.printStackTrace();
                     String error = "Unable to Find Record";
