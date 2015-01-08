@@ -133,25 +133,39 @@ PRODUCT
 														second child details if present
 														}
 							                          ],
-							    "stockAvailable": treu
+							    "stockAvailable": true
 							}
 4. GETALL	--> http://localhost:8080/Shopping/rest/productService/getAll
 
 5. SEARCH	--> http://localhost:8080/Shopping/rest/productService/search
 				JSON DATA --> { "id":10}
 6. DELETE	--> http://localhost:8080/Shopping/rest/productService/delete
-				JSON DATA --> { "id":10}
-7. SEARCH BY BRAND ID --> http://localhost:8080/Shopping/rest/productService/searchByBrand
-                          send as url parameters --> brandId, pageNumber, pageSize
-                          
-8. Search By Category Id --> http://localhost:8080/Shopping/rest/productService/searchByCategory
-							 send as url parameters --> categoryId, pageNumber, pageSize                          					
+				JSON DATA --> { "id":10}	
 				
 USERS
 =============
 1. GET		--> http://localhost:8080/Shopping/rest/userService/get
 2. INSERT	--> http://localhost:8080/Shopping/rest/userService/insert
-				JSON DATA --> {"userName": "USER","password": "USER" }
+				JSON DATA --> {
+								    "userName": "vijay",
+								    "password": "vijay",
+								    "mobile": "1111111111",
+								    "emailId": "emailId",
+								    "isActive": true,
+								    "orderedCount": "orderedCount",
+								    "totalTxnAmt": "totalTxnAmt",
+								    "role": 310,
+								    "langId": 320,
+								    "lastLoginDate": "lastLoginDate",
+								    "lastLoginIp": "lastLoginIp",
+								    "houseNumber": "houseNumber",
+								    "street": "street",
+								    "area": "area",
+								    "landmark": "landmark",
+								    "city": 19,
+								    "pincode": 1234567,
+								    "landlineNumber": 1231231231231
+								}
 				
 3. UPDATE 	--> http://localhost:8080/Shopping/rest/userService/update
 				JSON DATA --> {"userName": "USER 1","password": "USER 1","id":1}
@@ -213,15 +227,105 @@ TRANSACTION ORDER
 ==================
 1. GET		--> http://localhost:8080/Shopping/rest/transactionOrderService/get
 2. INSERT	--> http://localhost:8080/Shopping/rest/transactionOrderService/insert
-				JSON DATA --> {"txnOrderID": "TX ORDER " }
+				JSON DATA --> {
+							    "transactionStatus": 14,
+							    "totalPrice": 12,
+							    "discountType": 32,
+							    "txnOrderID": "txnOrderID",
+							    "productList": [
+							        {
+							            "unit": 28,
+							            "quantity": 12.9,
+							            "price": 12.78,
+							            "weight": 30,
+							            "product": 5,
+							            "transactionOrder": 2,
+							            "discountType": 32,
+							            "discountValue": 12
+							        },
+							        {
+							            "unit": 9,
+							            "quantity": 12.9,
+							            "price": 12.78,
+							            "weight": 30,
+							            "product": 7,
+							            "transactionOrder": 2,
+							            "discountType": 32,
+							            "discountValue": 12
+							        }
+							    ],
+							    "discountValue": 12,
+							    "priceAfterDiscount": 11,
+							    "productCount": 1,
+							    "address": {
+							        "emailID": "emailID",
+							        "mobileNumber": 1231231213,
+							        "landmark": "landmark",
+							        "city": 1,
+							        "pincode": 121212,
+							        "landlineNumber": 123123123,
+							        "houseNumber": "houseNumber",
+							        "street": "street",
+							        "area": "area",
+							        "name": "name"
+							    }
+							}
+
 				
 3. UPDATE 	--> http://localhost:8080/Shopping/rest/transactionOrderService/update
-				JSON DATA --> {"txnOrderID": "TX ORDER 1","id":1}
+				JSON DATA --> {
+					        "txnOrderID": "txnOrderID",
+					        "transactionStatus": 14,
+					        "totalPrice": 12,
+					        "discountType": 32,
+					        "discountValue": 12,
+					        "priceAfterDiscount": 11,
+					        "productList": [
+					            {
+					                "unit": 28,
+					                "discountType": 32,
+					                "discountValue": 12,
+					                "product": 5,
+					                "quantity": 12.9,
+					                "weight": 30,
+					                "price": 12.78,
+					                "transactionOrder": 15,
+					                "id": 17
+					            },
+					            {
+					                "unit": 9,
+					                "discountType": 32,
+					                "discountValue": 12,
+					                "product": 7,
+					                "quantity": 12.9,
+					                "weight": 30,
+					                "price": 12.78,
+					                "transactionOrder": 15,
+					                "id": 18
+					            }
+					        ],
+					        "productCount": 1,
+					        "address": {
+					            "houseNumber": "houseNumber",
+					            "street": "street",
+					            "area": "area",
+					            "landmark": "landmark",
+					            "city": 19,
+					            "pincode": 0,
+					            "landlineNumber": 0,
+					            "mobileNumber": 0,
+					            "emailID": null,
+					            "name": "name",
+					            "id": 20
+					        },
+					        "id": 15
+					    }
 				
 4. GETALL	--> http://localhost:8080/Shopping/rest/transactionOrderService/getAll
+				OUTPUT --->[ data with in this ]
 
 5. SEARCH	--> http://localhost:8080/Shopping/rest/transactionOrderService/search
-				JSON DATA --> { "id":10}
+				JSON DATA --> {"id":15}
 				
 SCREEN URLS
 ==================
@@ -231,6 +335,33 @@ SCREEN URLS
 				
 3. GETALL	--> http://localhost:8080/Shopping/rest/screenUrlService/getAll
 
+ROLES
+======
+1. GET		--> http://localhost:8080/Shopping/rest/roleService/get
+2. INSERT	--> http://localhost:8080/Shopping/rest/roleService/insert
+				JSON DATA --> {"roleName": "roleName"}
+3. UPDATE	--> http://localhost:8080/Shopping/rest/roleService/update
+				JSON DATA --> {"roleName": "roleName","id":12}				
+4. GETALL	--> http://localhost:8080/Shopping/rest/roleService/getAll
+5. SEARCH	--> http://localhost:8080/Shopping/rest/roleService/search
+				JSON DATA --> {"id":15}
+6. DELETE	--> http://localhost:8080/Shopping/rest/roleService/delete
+				JSON DATA --> { "id":10}
+
+
+LANGUAGE
+=========
+1. GET		--> http://localhost:8080/Shopping/rest/languageService/get
+2. INSERT	--> http://localhost:8080/Shopping/rest/languageService/insert
+				JSON DATA --> {"languageName": "languageName"}
+3. UPDATE	--> http://localhost:8080/Shopping/rest/languageService/update
+				JSON DATA --> {"languageName": "languageName","id":12}				
+4. GETALL	--> http://localhost:8080/Shopping/rest/languageService/getAll
+5. SEARCH	--> http://localhost:8080/Shopping/rest/languageService/search
+				JSON DATA --> {"id":15}
+6. DELETE	--> http://localhost:8080/Shopping/rest/languageService/delete
+				JSON DATA --> { "id":10}
+				
 List of URLS to store
 =====================
 /Shopping/rest/accessService/login
@@ -239,4 +370,4 @@ List of URLS to store
 /Shopping/rest/unitService/update
 /Shopping/rest/unitService/getAll
 /Shopping/rest/unitService/search
-/Shopping/rest/unitService/delete		
+/Shopping/rest/unitService/delete

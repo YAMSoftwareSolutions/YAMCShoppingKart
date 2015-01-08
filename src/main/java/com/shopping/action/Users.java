@@ -39,6 +39,7 @@ public class Users {
 	@Path("/insert")
 	public Response insertUsers(UsersTo usersTo,
 			@Context HttpServletRequest request) {
+		System.out.println("BBBBBBBBBBBBBBBB");
 		try {
 //			usersTo = ShoppingCartFactory.getUserDao().insert(
 //					unitTo,
