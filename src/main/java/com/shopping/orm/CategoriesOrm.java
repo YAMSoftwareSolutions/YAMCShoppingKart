@@ -20,7 +20,7 @@ public class CategoriesOrm implements Serializable{
 
 	private static final long serialVersionUID = -1932242021588311605L;
 	@Id 
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;
 	@Column(name = "category_name_eng")
 	private String categoryNameEng;

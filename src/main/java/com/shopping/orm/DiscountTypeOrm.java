@@ -19,7 +19,7 @@ import javax.persistence.TemporalType;
 public class DiscountTypeOrm implements Serializable{
 	private static final long serialVersionUID = -2086827566018363729L;
 	@Id 
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "id")
 	private int id;
 	@Column(name = "discount_name")

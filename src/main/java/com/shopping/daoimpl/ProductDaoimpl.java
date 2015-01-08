@@ -9,18 +9,14 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Criterion;
-import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.ProjectionList;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import com.shopping.dao.ProductDao;
 import com.shopping.hibernate.HibernateUtil;
-import com.shopping.orm.BrandOrm;
 import com.shopping.orm.ProductOrm;
 import com.shopping.orm.ProductUnitDetailsOrm;
-import com.shopping.to.BrandTo;
 import com.shopping.to.ProductTo;
 import com.shopping.to.ProductUnitDetailsTo;
 

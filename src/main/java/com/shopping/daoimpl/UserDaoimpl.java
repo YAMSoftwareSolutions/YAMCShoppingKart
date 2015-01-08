@@ -50,8 +50,26 @@ public class UserDaoimpl implements UserDao{
 			session = HibernateUtil.getSessionFactory().openSession();
 			//Set the ORM
 			UserOrm userOrm = new UserOrm();
+			
 			userOrm.setUserName(usersTo.getUserName());
 			userOrm.setPassword(usersTo.getPassword());
+			userOrm.setMobile(usersTo.getMobile());
+			userOrm.setEmailId(usersTo.getEmailId());
+			userOrm.setActive(usersTo.isActive());
+			userOrm.setOrderedCount(usersTo.getOrderedCount());
+			userOrm.setTotalTxnAmt(usersTo.getTotalTxnAmt());
+			userOrm.setRole(new RoleDaoimpl().getRoleById(usersTo.getRole()));
+			userOrm.setLangId(new LanguageDaoimpl().getLanguageById(usersTo.getLangId()));
+			userOrm.setLastLoginDate(usersTo.getLastLoginDate());
+			userOrm.setLastLoginIp(usersTo.getLastLoginIp());
+			userOrm.setHouseNumber(usersTo.getHouseNumber());
+			userOrm.setStreet(usersTo.getStreet());
+			userOrm.setArea(usersTo.getArea());
+			userOrm.setLandmark(usersTo.getLandmark());
+			userOrm.setCity(new CityDaoimpl().getCityById(usersTo.getCity()));
+			userOrm.setPincode(usersTo.getPincode());
+			userOrm.setLandlineNumber(usersTo.getLandlineNumber());
+			
 			userOrm.setCreatedBy(new UserDaoimpl().getUserById(userId));
 			userOrm.setCreatedDate(new Date());
 			userOrm.setModifiedBy(new UserDaoimpl().getUserById(userId));
@@ -85,8 +103,28 @@ public class UserDaoimpl implements UserDao{
 
 			//Update the ORM
 			UserOrm userOrm = (UserOrm) session.load(UserOrm.class, new Integer(id));
+			
 			userOrm.setUserName(usersTo.getUserName());
 			userOrm.setPassword(usersTo.getPassword());
+			userOrm.setMobile(usersTo.getMobile());
+			userOrm.setEmailId(usersTo.getEmailId());
+			userOrm.setActive(usersTo.isActive());
+			userOrm.setOrderedCount(usersTo.getOrderedCount());
+			userOrm.setTotalTxnAmt(usersTo.getTotalTxnAmt());
+			userOrm.setRole(new RoleDaoimpl().getRoleById(usersTo.getRole()));
+			userOrm.setLangId(new LanguageDaoimpl().getLanguageById(usersTo.getLangId()));
+			userOrm.setLastLoginDate(usersTo.getLastLoginDate());
+			userOrm.setLastLoginIp(usersTo.getLastLoginIp());
+			userOrm.setHouseNumber(usersTo.getHouseNumber());
+			userOrm.setStreet(usersTo.getStreet());
+			userOrm.setArea(usersTo.getArea());
+			userOrm.setLandmark(usersTo.getLandmark());
+			userOrm.setCity(new CityDaoimpl().getCityById(usersTo.getCity()));
+			userOrm.setPincode(usersTo.getPincode());
+			userOrm.setLandlineNumber(usersTo.getLandlineNumber());
+			
+			
+			
 			userOrm.setModifiedBy(new UserDaoimpl().getUserById(userId));
 			userOrm.setModifiedDate(new Date());
 
@@ -121,6 +159,23 @@ public class UserDaoimpl implements UserDao{
 			usersTo.setId(usersOrm.getId());
 			usersTo.setUserName(usersOrm.getUserName());
 			usersTo.setPassword(usersOrm.getPassword());
+			usersTo.setMobile(usersOrm.getMobile());
+			usersTo.setEmailId(usersOrm.getEmailId());
+			usersTo.setActive(usersOrm.isActive());
+			usersTo.setOrderedCount(usersOrm.getOrderedCount());
+			usersTo.setTotalTxnAmt(usersOrm.getTotalTxnAmt());
+			usersTo.setRole(usersOrm.getRole().getId());
+			usersTo.setLangId(usersOrm.getLangId().getId());
+			usersTo.setLastLoginDate(usersOrm.getLastLoginDate());
+			usersTo.setLastLoginIp(usersOrm.getLastLoginIp());
+			usersTo.setHouseNumber(usersOrm.getHouseNumber());
+			usersTo.setStreet(usersOrm.getStreet());
+			usersTo.setArea(usersOrm.getArea());
+			usersTo.setLandmark(usersOrm.getLandmark());
+			usersTo.setCity(usersOrm.getCity().getId());
+			usersTo.setPincode(usersOrm.getPincode());
+			usersTo.setLandlineNumber(usersOrm.getLandlineNumber());
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -149,6 +204,22 @@ public class UserDaoimpl implements UserDao{
 				usersTo.setId(usersOrm.getId());
 				usersTo.setUserName(usersOrm.getUserName());
 				usersTo.setPassword(usersOrm.getPassword());
+				usersTo.setMobile(usersOrm.getMobile());
+				usersTo.setEmailId(usersOrm.getEmailId());
+				usersTo.setActive(usersOrm.isActive());
+				usersTo.setOrderedCount(usersOrm.getOrderedCount());
+				usersTo.setTotalTxnAmt(usersOrm.getTotalTxnAmt());
+				usersTo.setRole(usersOrm.getRole().getId());
+				usersTo.setLangId(usersOrm.getLangId().getId());
+				usersTo.setLastLoginDate(usersOrm.getLastLoginDate());
+				usersTo.setLastLoginIp(usersOrm.getLastLoginIp());
+				usersTo.setHouseNumber(usersOrm.getHouseNumber());
+				usersTo.setStreet(usersOrm.getStreet());
+				usersTo.setArea(usersOrm.getArea());
+				usersTo.setLandmark(usersOrm.getLandmark());
+				usersTo.setCity(usersOrm.getCity().getId());
+				usersTo.setPincode(usersOrm.getPincode());
+				usersTo.setLandlineNumber(usersOrm.getLandlineNumber());
 				//Add the Object to the Array List
 				lstUsersTo.add(usersTo);
 			}

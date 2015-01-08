@@ -3,16 +3,13 @@ package com.shopping.orm;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,7 +20,7 @@ public class UserOrm implements Serializable{
 
 	private static final long serialVersionUID = -7523667360259054616L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "id")
 	private int id;
 	@Column(name = "user_name")
@@ -73,11 +70,6 @@ public class UserOrm implements Serializable{
 	@Column(name = "landline_number")
 	private long landlineNumber;
 	
-//	@OneToOne(fetch=FetchType.LAZY, cascade={CascadeType.ALL},targetEntity=UserAddressOrm.class)
-//	@JoinColumn(name="user_id",nullable=false)
-//	private UserAddressOrm address = new UserAddressOrm();
-	
-
 	//Common  Fields
 	@ManyToOne
 	@JoinColumn(name="created_by")
@@ -211,12 +203,6 @@ public class UserOrm implements Serializable{
 		this.landlineNumber = landlineNumber;
 	}	
 	
-//	public UserAddressOrm getAddress() {
-//		return address;
-//	}
-//	public void setAddress(UserAddressOrm address) {
-//		this.address = address;
-//	}
 	public UserOrm getCreatedBy() {
 		return createdBy;
 	}
