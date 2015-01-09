@@ -27,6 +27,12 @@ angular.module('shopApp').directive('header',
 	        		},6 : {
 	        			"name" : "Products",
 	        			"sref" : "products"
+	        		},7 : {
+	        			"name" : "Users",
+	        			"sref" : "users"
+	        		},8 : {
+	        			"name" : "User Roles",
+	        			"sref" : "usersRoles"
 	        		}
 	        	};
 

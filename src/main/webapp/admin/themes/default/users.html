@@ -77,13 +77,16 @@ private long landlineNumber; -->
 	                    <th>User Name</th>                  
 	                    <th>Mobile</th>	                    
 	                    <th>Email</th>	                    
-	                    <th>Tamil Name</th>
 	                    <th class="col-md-2">Actions</th>	                    
 	                </tr>
 	            </thead>
 	            <tbody>
-	            	<tr ng-repeat="brand in brandsList">
-
+	            	<tr ng-repeat="user in usersList">
+						<td ng-bind="user.name"></td>
+						<td ng-bind="user.mobile"></td>
+						<td ng-bind="user.emailId"></td>
+						<td>
+						</td>
 	            	</tr>
 	            </tbody>
 	        </table>

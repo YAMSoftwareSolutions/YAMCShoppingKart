@@ -140,7 +140,12 @@ PRODUCT
 5. SEARCH	--> http://localhost:8080/Shopping/rest/productService/search
 				JSON DATA --> { "id":10}
 6. DELETE	--> http://localhost:8080/Shopping/rest/productService/delete
-				JSON DATA --> { "id":10}	
+				JSON DATA --> { "id":10}
+7. SEARCH BY BRAND ID --> http://localhost:8080/Shopping/rest/productService/searchByBrand
+                          send as url parameters --> brandId, pageNumber, pageSize
+                          
+8. Search By Category Id --> http://localhost:8080/Shopping/rest/productService/searchByCategory
+							 send as url parameters --> categoryId, pageNumber, pageSize                          					
 				
 USERS
 =============
