@@ -7,6 +7,7 @@ import com.shopping.dao.DiscountTypeDao;
 import com.shopping.dao.LanguageDao;
 import com.shopping.dao.ProductDao;
 import com.shopping.dao.RoleDao;
+import com.shopping.dao.RoleToScreenDao;
 import com.shopping.dao.ScreenUrlDao;
 import com.shopping.dao.TransactionOrderDao;
 import com.shopping.dao.TransactionStatusDao;
@@ -20,6 +21,7 @@ import com.shopping.daoimpl.DiscountTypeDaoimpl;
 import com.shopping.daoimpl.LanguageDaoimpl;
 import com.shopping.daoimpl.ProductDaoimpl;
 import com.shopping.daoimpl.RoleDaoimpl;
+import com.shopping.daoimpl.RoleToScreenDaoimpl;
 import com.shopping.daoimpl.ScreenUrlDaoimpl;
 import com.shopping.daoimpl.TransactionOrderDaoimpl;
 import com.shopping.daoimpl.TransactionStatusDaoimpl;
@@ -42,6 +44,7 @@ public class ShoppingCartFactory {
 	public static ScreenUrlDao screenUrlDao;
 	public static RoleDao roleDao;
 	public static LanguageDao languageDao;
+	public static RoleToScreenDao roleToScreenDao;
 	static{
 		userDao = new UserDaoimpl();
 		brandDao = new BrandDaoimpl();
@@ -56,6 +59,7 @@ public class ShoppingCartFactory {
 		screenUrlDao = new ScreenUrlDaoimpl();
 		roleDao = new RoleDaoimpl();
 		languageDao = new LanguageDaoimpl();
+		roleToScreenDao = new RoleToScreenDaoimpl();
 	}
 
 	
@@ -166,5 +170,12 @@ public class ShoppingCartFactory {
 		ShoppingCartFactory.languageDao = languageDao;
 	}
 	
+	public static RoleToScreenDao getRoleToScreenDao() {
+		return roleToScreenDao;
+	}
+	
+	public static void setRoleToScreenDao(RoleToScreenDao roleToScreenDao) {
+		ShoppingCartFactory.roleToScreenDao = roleToScreenDao;
+	}
 	
 }

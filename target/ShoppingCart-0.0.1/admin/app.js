@@ -63,6 +63,13 @@ angular.module("shopApp",
             data:{
                 action : "users",
             }
+        }).state('usersRoles', {
+            url: '/userRoles',
+            templateUrl: themeBasePath+'/userRoles.html',
+            controller : "userRolesController",
+            data:{
+                action : "userRoles",
+            }
         })
 
         $urlRouterProvider.otherwise("dashboard");

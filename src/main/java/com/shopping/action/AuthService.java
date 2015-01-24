@@ -8,6 +8,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -19,7 +20,7 @@ import com.shopping.daofactory.ShoppingCartFactory;
 public class AuthService {
 	@POST
 	@Path("/login")
-	public Response loginAuth(String username, String password,
+	public Response loginAuth(@QueryParam(value = "username") String username,@QueryParam(value = "password") String password,
 			@Context HttpServletRequest request, @Context UriInfo uriInfo) {
 		int userId;
 		try {
@@ -29,7 +30,7 @@ public class AuthService {
 			System.out.println("userId::::::::::::"+userId);
 			if (userId != 0) {
 				request.setAttribute("userId", userId);
-				HttpSession httpsession = request.getSession();
+				HttpSession httpsession = request.getSession(true);
 				httpsession.setAttribute("ipaddress", request.getRemoteHost());
 				URI uri = uriInfo.getBaseUriBuilder().path("../admin").build();
 				return Response.seeOther(uri).build();

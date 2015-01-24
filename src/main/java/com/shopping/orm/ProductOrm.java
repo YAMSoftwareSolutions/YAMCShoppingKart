@@ -51,7 +51,7 @@ public class ProductOrm {
 	private CategoriesOrm productCategory;
 	@Lob
 	@Type(type="org.hibernate.type.BinaryType")
-	@Column(columnDefinition="blob")
+	@Column(columnDefinition="bytea")
 	private byte[] productImage;
 	
 	@OneToMany(fetch=FetchType.LAZY,mappedBy="product",cascade={CascadeType.ALL},targetEntity=ProductUnitDetailsOrm.class)

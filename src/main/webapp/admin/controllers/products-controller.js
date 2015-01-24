@@ -127,6 +127,7 @@ angular.module("shopApp").controller("productsController",
 	            fileObj.onload = function()
 	            {
 	                //xhr.send("file1=" + fileObj.result); //Send to server
+	                console.log(fileObj.result);
 	                $scope.productFormData.productImage = fileObj.result.split(",")[1];
 					$scope.submitProduct();
 	            }
