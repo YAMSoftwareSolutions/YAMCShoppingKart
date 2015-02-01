@@ -196,6 +196,8 @@ public class UserDaoimpl implements UserDao{
 			//Get the record based on ID From DB
 			@SuppressWarnings("unchecked")
 			ArrayList<UserOrm> lstUsersOrm = (ArrayList<UserOrm>) session.createCriteria(UserOrm.class).list();
+			System.out.println("size::::::::::::::::::::::");
+			System.out.println(lstUsersOrm.size());
 			UsersTo usersTo = null;
 			lstUsersTo = new ArrayList<UsersTo>();
 			for (UserOrm usersOrm : lstUsersOrm) {
@@ -210,14 +212,14 @@ public class UserDaoimpl implements UserDao{
 				usersTo.setOrderedCount(usersOrm.getOrderedCount());
 				usersTo.setTotalTxnAmt(usersOrm.getTotalTxnAmt());
 				usersTo.setRole(usersOrm.getRole().getId());
-				usersTo.setLangId(usersOrm.getLangId().getId());
+				//usersTo.setLangId(usersOrm.getLangId().getId());
 				usersTo.setLastLoginDate(usersOrm.getLastLoginDate());
 				usersTo.setLastLoginIp(usersOrm.getLastLoginIp());
 				usersTo.setHouseNumber(usersOrm.getHouseNumber());
 				usersTo.setStreet(usersOrm.getStreet());
 				usersTo.setArea(usersOrm.getArea());
 				usersTo.setLandmark(usersOrm.getLandmark());
-				usersTo.setCity(usersOrm.getCity().getId());
+				//usersTo.setCity(usersOrm.getCity().getId());
 				usersTo.setPincode(usersOrm.getPincode());
 				usersTo.setLandlineNumber(usersOrm.getLandlineNumber());
 				//Add the Object to the Array List
@@ -226,7 +228,8 @@ public class UserDaoimpl implements UserDao{
 
 
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
+			System.out.println("exception caught"+e.toString());
 		}
 		finally{
 			session.clear();

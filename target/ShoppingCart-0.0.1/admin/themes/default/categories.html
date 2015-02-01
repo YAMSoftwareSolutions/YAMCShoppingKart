@@ -16,6 +16,7 @@
 </script>
 <div class="row">
   
+  <span ng-show="globalConfig.rolesPermissions.categories_create">
   <div class="col-md-12">
     <button class="btn btn-primary" ng-click="showCategoryFormFlag=true;currentCategoryName=false" ng-hide="showCategoryFormFlag">Add category</button>
     <form role="form" ng-show="showCategoryFormFlag">
@@ -49,6 +50,8 @@
         <button type="reset" class="btn btn-default" ng-click="showCategoryFormFlag=flase">Reset</button>
     </form>
   </div> 
+  </span>
+  <span ng-show="globalConfig.rolesPermissions.categories_view">
   <div class="col-md-12 categoriesTreeDiv">
     <div ui-tree data-drag-enabled=false>
       <ol ui-tree-nodes="" ng-model="categoriesList" id="tree-root">
@@ -56,4 +59,5 @@
       </ol>
     </div>
   </div>
+  <span ng-show="globalConfig.rolesPermissions.categories_create">
 </div>

@@ -41,29 +41,31 @@ private long landlineNumber; -->
 	            <input class="form-control" placeholder="EmailId" ng-model="usersFormData.emailId">
 	        </div>
 	        <div class="form-group">	            
-	            <input class="form-control" placeholder="Role" ng-model="usersFormData.role">
+	            <select ng-model="usersFormData.role" class="form-group">
+	            	<option ng-repeat="userRole in userRolesList" value="{{userRole.id}}">{{userRole.roleName}}</option>
+	            </select>
 	        </div>
 	        <div class="form-group">	            
-	            <input class="form-control" placeholder="HouseNo" ng-model="usersFormData.address.houseNumber">
+	            <input class="form-control" placeholder="HouseNo" ng-model="usersFormData.houseNumber">
 	        </div>
 	        <div class="form-group">	            
-	            <input class="form-control" placeholder="Street" ng-model="usersFormData.address.street">
+	            <input class="form-control" placeholder="Street" ng-model="usersFormData.street">
 	        </div>
 	        <div class="form-group">	            
-	            <input class="form-control" placeholder="Area" ng-model="usersFormData.address.area">
+	            <input class="form-control" placeholder="Area" ng-model="usersFormData.area">
 	        </div>
 	        <div class="form-group">	            
-	            <input class="form-control" placeholder="Landmark" ng-model="usersFormData.address.landmark">
+	            <input class="form-control" placeholder="Landmark" ng-model="usersFormData.landmark">
 	        </div>
 	        <div class="form-group">
-	            <input class="form-control" placeholder="City" ng-model="usersFormData.address.city">
+	            <input class="form-control" placeholder="City" ng-model="usersFormData.city">
 	        </div>
 	        <div class="form-group">	            
-	            <input class="form-control" placeholder="Pincode" ng-model="usersFormData.address.pincode">
+	            <input class="form-control" placeholder="Pincode" ng-model="usersFormData.pincode">
 	        </div>
-	        
-	        <button type="button" class="btn btn-primary" ng-show="!usersFormShowFlag" ng-click="createUser()">Submit</button>
-	        <button type="button" class="btn btn-primary" ng-show="usersFormShowFlag" ng-click="updateUser()">Update</button>
+	        {{usersFormEditFlag}}
+	        <button type="button" class="btn btn-primary" ng-show="!usersFormEditFlag" ng-click="createUser()">Submit</button>
+	        <button type="button" class="btn btn-primary" ng-show="usersFormEditFlag" ng-click="updateUser()">Update</button>
         	<button type="reset" class="btn btn-default">Reset</button>
 	    </form>
 	</div>

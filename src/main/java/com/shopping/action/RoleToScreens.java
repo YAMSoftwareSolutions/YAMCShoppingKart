@@ -10,6 +10,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.shopping.daofactory.ShoppingCartFactory;
+import com.shopping.to.RoleTo;
 import com.shopping.to.RoleToScreenTo;
 
 @Path("/roletoScreens")
@@ -27,4 +28,25 @@ public class RoleToScreens {
 		return Response.status(201).entity(roleToScreenTo).build();
 		
 	}
+	
+	// ROLE SEARCH BY ID
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/search")
+	public Response searchRoleToScreen(RoleToScreenTo roleToScreenTo,
+			@Context HttpServletRequest request) {
+		try {
+			System.out.println("roleId::::");
+			System.out.println(roleToScreenTo.getRoleId());
+			roleToScreenTo = ShoppingCartFactory.getRoleToScreenDao().searchByid(
+					roleToScreenTo.getRoleId());
+			return Response.status(201).entity(roleToScreenTo).build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			String error = "Unable to Find Record";
+			return Response.status(403).entity(error).build();
+		}
+	}
+	
 }

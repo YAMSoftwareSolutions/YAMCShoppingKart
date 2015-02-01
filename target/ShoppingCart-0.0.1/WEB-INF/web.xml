@@ -18,7 +18,14 @@
     	<servlet-name>jersey-servlet</servlet-name>
     	<url-pattern>/rest/*</url-pattern>
   </servlet-mapping>
-  
+ <servlet>
+ 	<servlet-name>login</servlet-name>
+ 	<servlet-class>com.shopping.action.LoginServlet</servlet-class>
+ </servlet> 
+ <servlet-mapping>
+ <servlet-name>login</servlet-name>
+ <url-pattern>/accessService/login</url-pattern>
+ </servlet-mapping>
   <!-- Session Management -->
   <!-- <session-config>
     	<session-timeout>1</session-timeout>

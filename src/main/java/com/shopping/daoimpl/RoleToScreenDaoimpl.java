@@ -24,6 +24,8 @@ public class RoleToScreenDaoimpl implements RoleToScreenDao {
 			session = HibernateUtil.getSessionFactory().openSession();
 			System.out.println("/////////////////////////////");
 			RoleToScreenOrm roleToScreenOrm = new RoleToScreenOrm();
+			System.out.println(roleToScreenTo.getRoleId());
+			roleToScreenOrm.setRoleId(roleToScreenTo.getRoleId());
 			roleToScreenOrm.setBrands_create(roleToScreenTo.getBrands_create());
 			roleToScreenOrm.setBrands_delete(roleToScreenTo.getBrands_delete());
 			roleToScreenOrm.setBrands_update(roleToScreenTo.getBrands_update());
@@ -91,11 +93,12 @@ public class RoleToScreenDaoimpl implements RoleToScreenDao {
 			session = HibernateUtil.getSessionFactory().openSession();
 			
 			//Get the record based on ID From DB
-			RoleToScreenOrm roleToScreenOrm=(RoleToScreenOrm) session.createCriteria(RoleToScreenOrm.class).add(Restrictions.eq("id", id)).uniqueResult();
+			RoleToScreenOrm roleToScreenOrm=(RoleToScreenOrm) session.createCriteria(RoleToScreenOrm.class).add(Restrictions.eq("roleId", id)).uniqueResult();
 			
 			//Set the Data to the To Object
 			roleToScreenTo=new RoleToScreenTo();
 			roleToScreenTo.setId(roleToScreenOrm.getId());
+			roleToScreenTo.setRoleId(roleToScreenOrm.getRoleId());
 			roleToScreenTo.setBrands_create(roleToScreenOrm.getBrands_create());
 			roleToScreenTo.setBrands_delete(roleToScreenOrm.getBrands_delete());
 			roleToScreenTo.setBrands_update(roleToScreenOrm.getBrands_update());

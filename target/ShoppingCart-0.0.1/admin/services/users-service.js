@@ -3,7 +3,7 @@ angular.module("shopApp").service("usersService",
 		
 		this.getUsers = function(){
 			var deferred = $q.defer();
-			$http.post(serviceCallBaseUrl+"usersService/getAll")
+			$http.post(serviceCallBaseUrl+"userService/getAll")
 			.success(function(data, status, headers, config) {				
 				deferred.resolve(data);
 			}).
@@ -15,7 +15,7 @@ angular.module("shopApp").service("usersService",
 
 		this.createUsers = function(request){
 			var deferred = $q.defer();
-			$http.post(serviceCallBaseUrl+"usersService/insert",request)
+			$http.post(serviceCallBaseUrl+"userService/insert",request)
 			.success(function(data,status,headers,config) {
 				deferred.resolve(data);
 			}).
@@ -27,7 +27,7 @@ angular.module("shopApp").service("usersService",
 
 		this.updateUsers = function(request) {
 			var deferred = $q.defer();
-			$http.post(serviceCallBaseUrl+"usersService/update",request)
+			$http.post(serviceCallBaseUrl+"userService/update",request)
 			.success(function(data,status,headers,config) {
 				deferred.resolve(data);
 			}).
@@ -39,7 +39,7 @@ angular.module("shopApp").service("usersService",
 
 		this.deleteUsers = function(request) {
 			var deferred = $q.defer();
-			$http.post(serviceCallBaseUrl+"usersService/delete",request)
+			$http.post(serviceCallBaseUrl+"userService/delete",request)
 			.success(function(data,status,headers,config) {
 				deferred.resolve(data);
 			}).

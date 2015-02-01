@@ -6,6 +6,8 @@ angular.module("shopApp",
     config(["$stateProvider","$urlRouterProvider",
         function($stateProvider,$urlRouterProvider){    
 
+    	
+    	
         $stateProvider.state('dashboard', {
             url: "/dashboard",
             templateUrl: themeBasePath+'/home.html',
@@ -75,4 +77,38 @@ angular.module("shopApp",
         $urlRouterProvider.otherwise("dashboard");
 
     }
+]).run(["$rootScope",
+        function($rootScope){
+	
+	$rootScope.globalConfig =  GLOBALCONFIG;
+	
+	}
 ]);
+
+angular.module("starterapp",
+    ['ui.router','ui.tree']).
+    value("serviceCallBaseUrl","../rest/").
+    run(["$http",
+        function($http){    
+    	var tempUserRequest = {id:GLOBALCONFIG.userID};
+    	$http.post("../rest/userService/search",tempUserRequest)
+		.success(function(data, status, headers, config) {
+			var tempRequest = {roleId:data.role};
+			$http.post("../rest/roletoScreens/search",tempRequest)
+			.success(function(data, status, headers, config) {				
+				GLOBALCONFIG.rolesPermissions = data;
+				angular.bootstrap(document.getElementById("appdiv"), ['shopApp']); 
+			}).
+			error(function(data, status, headers, config) {
+			
+			});
+		}).
+		error(function(data, status, headers, config) {
+		
+		});		    	
+	}
+]);
+
+angular.element(document).ready(function() {
+    angular.bootstrap(document.getElementById("starterdiv"), ['starterapp']);   
+});

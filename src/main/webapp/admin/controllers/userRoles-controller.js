@@ -2,7 +2,10 @@ angular.module("shopApp").controller("userRolesController",
 	["$scope","userRolesService",
 	function($scope,userRolesService){
 
+		$scope.userRoleFormRoleName = "";
+		
 		$scope.userRolesFormData = {
+			roleId : "",
 			categories_view : false,
 			categories_create : false,
 			categories_update : false,
@@ -34,7 +37,7 @@ angular.module("shopApp").controller("userRolesController",
 		};
 
 		$scope.submitUserRolesForm = function() {
-			userRolesService.insertUserRoles($scope.userRolesFormData).then(function(result){
+			userRolesService.insertUserRoles($scope.userRolesFormData,$scope.userRoleFormRoleName).then(function(result){
 				
 			});
 		};
