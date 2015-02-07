@@ -2,7 +2,7 @@
 <div class="row">
 
 	<div class="col-md-12">
-		<button class="btn btn-primary" ng-show="!weightsFormShowFlag" ng-click="weightsFormShowFlag=true">Add Weight</button>
+		<button class="btn btn-primary" ng-show="!weightsFormShowFlag && globalConfig.rolesPermissions.weight_create" ng-click="weightsFormShowFlag=true" >Add Weight</button>
 		<form role="form" ng-show="weightsFormShowFlag">
 	        <h4> Add a Weight</h4>
 	        <div class="form-group">
@@ -29,7 +29,7 @@
 	    </form>
 	</div>
 
-	<div class="col-md-12 categoriesTreeDiv">
+	<div class="col-md-12 categoriesTreeDiv" ng-show="globalConfig.rolesPermissions.weight_view">
 	    <div class="table-responsive">
 	        <table class="table table-bordered table-hover">
 	            <thead>
@@ -48,8 +48,8 @@
 	            		<td ng-bind="weight.weightValue"></td>
 	            		<td ng-bind="unitsList[weight.unit].unitName"></td>
 	            		<td>
-    						<a class="btn btn-primary btn-xs" ng-click="editWeight(weight.id)"><span class="fa fa-edit"></span></a>
-	            			<a class="btn btn-danger btn-xs"><span class="fa fa-minus" ng-click="deleteWeight(weight.id)"></span></a>
+    						<a class="btn btn-primary btn-xs" ng-click="editWeight(weight.id)" ng-show="globalConfig.rolesPermissions.weight_update"><span class="fa fa-edit"></span></a>
+	            			<a class="btn btn-danger btn-xs" ng-show="globalConfig.rolesPermissions.weight_delete"><span class="fa fa-minus" ng-click="deleteWeight(weight.id)"></span></a>
     					</td>			
 	            	</tr>
 	            </tbody>

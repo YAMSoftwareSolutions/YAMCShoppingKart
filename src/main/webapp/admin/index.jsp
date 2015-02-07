@@ -49,7 +49,6 @@
 				%>
 				<script type="text/javascript">
 				var GLOBALCONFIG = {userID : <%=session.getAttribute("userId")%>};
-				alert(GLOBALCONFIG.userID);
 				</script>
 				<%				
 			}

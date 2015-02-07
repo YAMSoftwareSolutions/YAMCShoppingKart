@@ -8,5 +8,5 @@ public interface RoleToScreenDao {
 
 	public RoleToScreenTo insertRolesToScreen(RoleToScreenTo roleToScreenTo);
 	public RoleToScreenTo searchByid(int id);
-	
+	public RoleToScreenTo getAll();
 }

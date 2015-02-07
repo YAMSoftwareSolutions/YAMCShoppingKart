@@ -3,7 +3,7 @@
 
 
 	<div class="col-md-12">
-		<button class="btn btn-primary" ng-click="brandsFormShowFlag=true" ng-show="!brandsFormShowFlag">Add brand</button>
+		<button class="btn btn-primary" ng-click="brandsFormShowFlag=true" ng-show="!brandsFormShowFlag && globalConfig.rolesPermissions.brands_create">Add brand</button>
 		<form role="form"  ng-show="brandsFormShowFlag">
 	        <h4> Add a brand</h4>
 	        <div class="form-group">	            
@@ -24,7 +24,7 @@
 	    </form>
 	</div>
 
-	<div class="col-md-12 categoriesTreeDiv" >
+	<div class="col-md-12 categoriesTreeDiv"  ng-show="globalConfig.rolesPermissions.brands_view">
 	    <div class="table-responsive">
 	        <table class="table table-bordered table-hover">
 	            <thead>
@@ -45,8 +45,8 @@
 	            		<td ng-bind="brand.brandNameHindi"></td>
 	            		<td ng-bind="brand.brandNameTamil"></td>
 	            		<td>
-    						<a class="btn btn-primary btn-xs" ng-click="editBrand(brand.id)"><span class="fa fa-edit"></span></a>
-	            			<a class="btn btn-danger btn-xs" ng-click="deleteBrand(brand.id)"><span class="fa fa-minus"></span></a>
+    						<a class="btn btn-primary btn-xs" ng-click="editBrand(brand.id)" ng-show="globalConfig.rolesPermissions.brands_update"><span class="fa fa-edit"></span></a>
+	            			<a class="btn btn-danger btn-xs" ng-click="deleteBrand(brand.id)"  ng-show="globalConfig.rolesPermissions.brands_delete"><span class="fa fa-minus"></span></a>
     					</td>			
 	            	</tr>
 	            </tbody>

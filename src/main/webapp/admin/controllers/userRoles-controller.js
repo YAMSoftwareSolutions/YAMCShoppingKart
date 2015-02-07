@@ -3,6 +3,10 @@ angular.module("shopApp").controller("userRolesController",
 	function($scope,userRolesService){
 
 		$scope.userRoleFormRoleName = "";
+
+		$scope.usersRolesFormShowFlag = false;
+		$scope.usersRolesFormEditFlag = false;
+		$scope.userRolesList = [];
 		
 		$scope.userRolesFormData = {
 			roleId : "",
@@ -41,6 +45,17 @@ angular.module("shopApp").controller("userRolesController",
 				
 			});
 		};
+
+		$scope.getUserRolesList = function() {
+			userRolesService.getUserRoles().then(function(result){
+				$scope.userRolesList = result;
+			});
+		}
+		$scope.getUserRolesList();
+
+		$scope.editUserRole = function(index) {
+
+		}
 		
 	}
 ]);

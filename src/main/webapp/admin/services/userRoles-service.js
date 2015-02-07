@@ -25,7 +25,21 @@ angular.module("shopApp").service("userRolesService",
 			var deferred = $q.defer();
 			$http.post(serviceCallBaseUrl+"roleService/getAll")
 			.success(function(data, status, headers, config) {				
-				deferred.resolve(data);
+				$http.post(serviceCallBaseUrl+"roletoScreens/getAll")
+				.success(function(rolesdata, status, headers, config) {
+					var tempdata = [];
+					for(index in rolesdata)
+					{
+						tempdata[index].id = data[index].id;
+						tempdata[index].name = data[index].roleName;
+						tempdata[index].roledata = rolesdata[index];
+					}
+					
+					deferred.resolve(tempdata);
+				}).
+	  			error(function(data, status, headers, config) {
+					deferred.reject(data);
+	  			});
 			}).
   			error(function(data, status, headers, config) {
 				deferred.reject(data);

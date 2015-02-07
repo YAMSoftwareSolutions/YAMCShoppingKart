@@ -1,16 +1,25 @@
 package com.shopping.daoimpl;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.Collection;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 import com.shopping.dao.RoleToScreenDao;
+import com.shopping.daofactory.ShoppingCartFactory;
 import com.shopping.hibernate.HibernateUtil;
-import com.shopping.orm.BrandOrm;
 import com.shopping.orm.RoleToScreenOrm;
-import com.shopping.to.BrandTo;
 import com.shopping.to.RoleToScreenTo;
 
 public class RoleToScreenDaoimpl implements RoleToScreenDao {
@@ -152,6 +161,21 @@ public class RoleToScreenDaoimpl implements RoleToScreenDao {
 		return roleToScreenTo;
 	}
 
-	
+/*	// USER Roles GET ALL
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/getAll")
+	public Response getAll(@Context HttpServletRequest request) {
+		try {
+			Collection<RoleToScreenTo> roleToScreenTo = new ArrayList<RoleToScreenTo>();
+			roleToScreenTo = ShoppingCartFactory.getRoleToScreenDao().getAll();
+			return Response.status(201).entity(roleToScreenTo).build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			String error = "Unable to Find Records";
+			return Response.status(403).entity(error).build();
+		}
+	}*/
 	
 }

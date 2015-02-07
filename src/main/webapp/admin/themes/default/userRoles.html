@@ -2,7 +2,8 @@
 	UserRoles
 </h3>
 <div class="row">
-	<div class="col-md-12">
+	<button class="btn btn-primary" ng-click="usersRolesFormShowFlag=true" ng-show="!usersRolesFormShowFlag">Add user</button>
+	<div class="col-md-12" ng-show="usersRolesFormShowFlag">
 		<form role="form" >
 			<div class="form-group">	            
 	            <input class="form-control" placeholder="Role name" ng-model="userRoleFormRoleName">
@@ -70,4 +71,29 @@
 			</div>
 		</form>
 	</div>
+
+	<div class="col-md-12" >
+	    <div class="table-responsive" ng-show="!usersRolesFormShowFlag">
+	        <table class="table table-bordered table-hover">
+	        	<thead>
+	        		<tr>
+	        			<th>S.No</th>
+	        			<th>RoleName</th>
+	        			<th>Actions</th>
+	        		</tr>
+	        	</thead>
+	        	<tbody>
+	        		<tr ng-repeat="role in userRolesList">
+	        			<td ng-bind="$index+1"></td>
+	        			<td ng-bind="role.name"></td>
+	        			<td>
+	        				<a class="btn btn-primary btn-xs" ng-click="editUserRoles(role.id)" ng-show="globalConfig.rolesPermissions.users_update"><span class="fa fa-edit"></span></a>
+	            			<a class="btn btn-danger btn-xs" ng-click="deleteUserRoles(role.id)"  ng-show="globalConfig.rolesPermissions.users_delete"><span class="fa fa-minus"></span></a>
+	        			</td>
+	        		</tr>
+	        	</tbody>
+	        </table>
+	    </div>
+	</div>
+
 </div>
