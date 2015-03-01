@@ -97,12 +97,22 @@ angular.module("shopApp").controller("homeController",
 			var tempProduct = _.find($scope.productsList,function(rw){
 				return rw.id == id;
 			});
-
+			console.debug(tempProduct);
 			var cartProduct = tempProduct;
 			cartProduct.id = id;
 			cartProduct.inCartUnit = $("#productunit"+id).val();
 			cartProduct.inCartQuantity = $("#productquantity"+id).val();
-
+			cartProduct.productImage = "";
+			var tempUnit = _.find(tempProduct.productUnitDetails,function(rw){
+				return rw.unit == cartProduct.inCartUnit;
+			});
+			cartProduct.discountType =  tempUnit.discountType;
+			cartProduct.discountValue =  tempUnit.discountValue;
+			cartProduct.price =  tempUnit.price;
+			cartProduct.unitName =  tempUnit.unitName;
+			cartProduct.weight =  tempUnit.weight;
+			cartProduct.productUnitDetails = {};
+			
 			/*var tempDiscount = _.find(tempProduct.productUnitDetails,function(rw){
 				return rw.unit == cartProduct.inCartUnit;
 			});
@@ -114,7 +124,7 @@ angular.module("shopApp").controller("homeController",
 			cartProducts[id] = cartProduct;
 
 			setCookie("shopAppCartProducts",JSON.stringify(cartProducts));
-
+			console.debug(getCookie("shopAppCartProducts"));
 			var tempProductIndex = $scope.productsList.indexOf(tempProduct);
 			
 			$scope.productsList[tempProductIndex].inCartFlag = true;

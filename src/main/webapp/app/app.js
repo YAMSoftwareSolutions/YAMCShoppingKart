@@ -13,8 +13,8 @@ angular.module("shopApp",
             myaccounts
             product view
             order confirmation            
-        */
-
+        */   	
+    	
         $stateProvider.state('home', {
             url: "/home",
             templateUrl: themeBasePath+'/home.html',            
@@ -63,8 +63,13 @@ angular.module("shopApp",
         $urlRouterProvider.otherwise("home");
 
     }
+]).run(["$rootScope",
+    function($rootScope){
+		$rootScope.globalConfig = GLOBALCONFIG;
+	}
 ]);
 function setCookie(cname, cvalue, exdays) {
+	console.debug(cname+"::;"+cvalue);
     var d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
     var expires = "expires="+d.toUTCString();

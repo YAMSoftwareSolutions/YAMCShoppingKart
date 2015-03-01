@@ -28,6 +28,19 @@ angular.module("shopApp").service("productsService",
   			});
   			return deferred.promise;
 		};
-
+		
+		this.updateProduct = function(request){
+			var deferred = $q.defer();
+			$http({
+			    url: serviceCallBaseUrl+"productService/update",			    
+			    method: "POST",
+			    data: request,
+			}).success(function(response){
+			    deferred.resolve(response);
+			}).error(function(error){
+			    deferred.reject(error);
+			});
+			return deferred.promise;
+		}
 	}
 );

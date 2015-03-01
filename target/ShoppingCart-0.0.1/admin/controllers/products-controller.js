@@ -24,6 +24,7 @@ angular.module("shopApp").controller("productsController",
 		*/
 
 		$scope.productsFormShowFlag = false;
+		$scope.productsFormEditFlag = false;
 
 		$scope.productFormData = {
 			"productNameHindi" : "",
@@ -163,6 +164,30 @@ angular.module("shopApp").controller("productsController",
 				$scope.productsFormEditFlag = true;
 			}		
 		}
+		
+		$scope.updateProduct = function(){
+			if(document.getElementById("productImageUpload").files.length!=0)
+			{
+				var fileObj = new FileReader();
+	            fileObj.onload = function()
+	            {
+	                //xhr.send("file1=" + fileObj.result); //Send to server
+	                console.log(fileObj.result);
+	                $scope.productFormData.productImage = fileObj.result.split(",")[1];
+					$scope.submitUpdateProduct();
+	            }
+	            fileObj.readAsDataURL(document.getElementById("productImageUpload").files[0]);
+	        }
+	        else {
+	        	$scope.submitUpdateProduct();
+	        }
+		}
+		
+		$scope.submitUpdateProduct = function(){
+			productsService.updateProduct($scope.productFormData).then(function(result){
+
+			});
+		};
 
 	}
 ]);

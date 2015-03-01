@@ -44,12 +44,11 @@ angular.module("shopApp").controller("usersController",
 		}
 
 		$scope.editUser = function(userId) {
-			alert(userId);
 			var tempUser = _.where($scope.userList,function(rw){
 				return rw.id == userId;
 			});
 			$scope.usersFormData = tempUser[0];
-			alert(tempUser[0].userName);
+
 			$scope.usersFormEditFlag = true;
 			$scope.usersFormShowFlag = true;
 		}

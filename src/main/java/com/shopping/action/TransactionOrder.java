@@ -42,6 +42,8 @@ public class TransactionOrder {
 //					transactionOrderTo,
 //					Integer.parseInt(request.getSession()
 //							.getAttribute("userId").toString()));
+			System.out.println("transactionOrderTo:::::::::");
+			System.out.println(transactionOrderTo);
 			transactionOrderTo = ShoppingCartFactory.getTransactionOrderDao().insert(transactionOrderTo, 1);
 			return Response.status(201).entity(transactionOrderTo).build();
 		} catch (Exception e) {

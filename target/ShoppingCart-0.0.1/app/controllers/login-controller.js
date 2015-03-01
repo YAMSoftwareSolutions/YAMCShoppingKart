@@ -1,7 +1,11 @@
 angular.module("shopApp").controller("loginController",
-	["$scope","$rootScope","homeService",
-	function($scope,$rootScope,homeService){
+	["$scope","$rootScope","homeService","$state",
+	function($scope,$rootScope,homeService,$state){
 		
+		if($rootScope.globalConfig.userID!=0)
+		{
+			$state.go("orderconformation");
+		}
 		$scope.registrationFormData = {
 			"userName" : "",
 			"password" : "",

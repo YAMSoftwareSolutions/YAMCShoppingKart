@@ -44,6 +44,34 @@ public class AuthService {
 			return Response.status(403).entity(error).build();
 		}
 	}
+	
+	@POST
+	@Path("/userLogin")
+	public Response userLoginAuth(AuthTo authto,
+			@Context HttpServletRequest request, @Context UriInfo uriInfo) {
+		int userId;
+		try {
+			System.out.println("username::::::::::::"+authto.getUsername());
+			System.out.println("password::::::::::::"+authto.getPassword());
+			userId = ShoppingCartFactory.getUserDao().verifyLogin(authto.getUsername(), authto.getPassword());
+			System.out.println("userId::::::::::::"+userId);
+			if (userId != 0) {
+				request.setAttribute("userId", userId);
+				HttpSession httpsession = request.getSession(true);
+				httpsession.setAttribute("ipaddress", request.getRemoteHost());
+				httpsession.setAttribute("userId", userId);
+				URI uri = uriInfo.getBaseUriBuilder().path("../app/#/orderconformation").build();
+				return Response.seeOther(uri).build();
+			}else{
+				URI uri = uriInfo.getBaseUriBuilder().path("../app/#/login").build();
+				return Response.seeOther(uri).build();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			String error = "ConstraintViolationException";
+			return Response.status(403).entity(error).build();
+		}
+	}
 
 	@POST
 	@Path("/logout")

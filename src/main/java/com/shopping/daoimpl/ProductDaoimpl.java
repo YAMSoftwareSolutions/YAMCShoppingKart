@@ -40,6 +40,7 @@ public class ProductDaoimpl implements ProductDao{
 			productOrm.setCreatedDate(new Date());
 			productOrm.setModifiedBy(new UserDaoimpl().getUserById(userId));
 			productOrm.setModifiedDate(new Date());
+			System.out.println("productImage::"+productTo.getProductImage());
 			productOrm.setProductImage(productTo.getProductImage());
 			ProductUnitDetailsOrm productUnitDetailsOrm = null;
 			for (ProductUnitDetailsTo productUnitDetailsTo : productTo.getProductUnitDetails()) {
@@ -141,6 +142,7 @@ public class ProductDaoimpl implements ProductDao{
 	}
 
 	public Collection<ProductTo> getAll(int pageNumber,int pageSize) {
+		System.out.println("Aetting the all the products");
 		Session session = null;
 		ArrayList<ProductTo> lstProductTo = null;
 		try {
@@ -162,6 +164,10 @@ public class ProductDaoimpl implements ProductDao{
 				productTo.setProductNameHindi(productOrm.getProductNameHindi());
 				productTo.setProductNameTamil(productOrm.getProductNameTamil());
 				productTo.setProductNameTel(productOrm.getProductNameTel());
+				System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&");
+				System.out.println(productOrm.getProductImage());
+				System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&");
+				productTo.setProductImage(productOrm.getProductImage());
 				productTo.setStockAvailable(productOrm.isStockAvailable());
 				productTo.setBrand(productOrm.getBrand().getId());
 				productTo.setproductCategory(productOrm.getproductCategory().getId());

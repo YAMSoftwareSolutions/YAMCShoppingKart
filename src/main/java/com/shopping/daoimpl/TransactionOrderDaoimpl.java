@@ -76,7 +76,7 @@ public class TransactionOrderDaoimpl implements TransactionOrderDao{
 				productListOrm.setModifiedDate(new Date());
 				transactionOrderOrm.getProductList().add(productListOrm);
 			}
-				
+			System.out.println(transactionOrderOrm);
 			//Begin transaction & save the object
 			tx = session.beginTransaction();
 			session.persist(transactionOrderOrm);
@@ -84,6 +84,7 @@ public class TransactionOrderDaoimpl implements TransactionOrderDao{
 			//Get the Updated Object from the DB
 			transactionOrderTo = null;
 			transactionOrderTo = this.searchById(transactionOrderOrm.getId());
+			System.out.println(transactionOrderTo);
 			
 		} catch (Exception e) {
 			System.out.println(e);

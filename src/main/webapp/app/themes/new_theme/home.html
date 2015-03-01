@@ -36,8 +36,7 @@
 
     <div class="col-sm-4 col-lg-3 col-md-4" ng-repeat="product in productsList">
         <div class="thumbnail">
-        	{{product.productImage}}
-            <img src="data:image/jpeg;base64,{{product.productImage}}" alt="">
+        	<img src="data:image/jpeg;base64,{{product.productImage}}" alt="">
             <div class="">
                 <h4 class="pull-right" ng-bind="product.price"></h4>
                 <h4>

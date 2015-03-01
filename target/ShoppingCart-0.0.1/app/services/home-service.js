@@ -87,6 +87,18 @@ angular.module("shopApp").service("homeService",
   			});
   			return deferred.promise;	
 		}
+		
+		this.confirmOrder = function(request) {
+			var deferred = $q.defer();
+			$http.post(serviceCallBaseUrl+"transactionOrderService/insert",request)
+			.success(function(data, status, headers, config) {				
+				deferred.resolve(data);
+			}).
+  			error(function(data, status, headers, config) {
+				deferred.reject(data);
+  			});
+  			return deferred.promise;	
+		}
 
 	}
 );

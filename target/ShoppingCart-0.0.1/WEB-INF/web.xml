@@ -26,6 +26,15 @@
  <servlet-name>login</servlet-name>
  <url-pattern>/accessService/login</url-pattern>
  </servlet-mapping>
+ 
+ <servlet>
+ 	<servlet-name>userlogin</servlet-name>
+ 	<servlet-class>com.shopping.action.UserLogin</servlet-class>
+ </servlet> 
+ <servlet-mapping>
+ <servlet-name>userlogin</servlet-name>
+ <url-pattern>/accessService/userLogin</url-pattern>
+ </servlet-mapping>
   <!-- Session Management -->
   <!-- <session-config>
     	<session-timeout>1</session-timeout>

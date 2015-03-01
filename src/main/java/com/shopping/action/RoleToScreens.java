@@ -70,4 +70,22 @@ public class RoleToScreens {
 		}
 	}
 	
+	// ROLE UPDATE
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/update")
+	public Response updateRole(RoleToScreenTo roleToScreenTo,
+			@Context HttpServletRequest request) {
+		try {
+			roleToScreenTo = ShoppingCartFactory.getRoleToScreenDao().update(roleToScreenTo.getId(),
+					roleToScreenTo);
+			return Response.status(201).entity(roleToScreenTo).build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			String error = "Faild to Update";
+			return Response.status(403).entity(error).build();
+		}
+	}
+	
 }

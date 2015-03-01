@@ -16,7 +16,7 @@
                 <tr ng-repeat="product in cartProducts">
                     <td ng-bind="$index+1"></td>
                     <td ng-bind="product.productNameEng"></td>
-                    <td><img src="http://placehold.it/140x100">
+                    <td><img src="data:image/jpeg;base64,{{product.productImage}}">
                     <div class="text-center"><a class="glyphicon glyphicon-remove">Remove</a></div>
                     </td>
                     <td>200 gm</td>

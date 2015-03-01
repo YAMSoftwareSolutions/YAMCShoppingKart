@@ -54,16 +54,19 @@ public class RoleDaoimpl implements RoleDao {
 		try {
 			//Get Session Factory
 			session = HibernateUtil.getSessionFactory().openSession();
-			tx = session.beginTransaction();
-			
+						
 			//Update the ORM
 			RoleOrm roleOrm = (RoleOrm)session.load(RoleOrm.class, new Integer(id));
 			roleOrm.setRoleName(roleTo.getRoleName());
 			roleOrm.setModifiedBy(ShoppingCartFactory.getUserDao().getUserById(userId));
 			roleOrm.setModifiedDate(new Date());
-			
-			//Commit the Transaction
+						
+			//Begin transaction & save the object
+			tx = session.beginTransaction();
+			session.save(roleOrm);
 			tx.commit();
+			//Commit the Transaction
+			
 			
 			//Get the Updated Object from the DB
 			sendRoleTo = this.searchById(id);

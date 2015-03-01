@@ -28,42 +28,45 @@ private long landlineNumber; -->
 		<button class="btn btn-primary" ng-click="usersFormShowFlag=true" ng-show="!usersFormShowFlag">Add user</button>
 		<form role="form"  ng-show="usersFormShowFlag">
 	        <h4> Add a user</h4>
-	        <div class="form-group">	            
-	            <input class="form-control" placeholder="User name" ng-model="usersFormData.userName">
-	        </div>
-	        <div class="form-group">	            
-	            <input class="form-control" placeholder="Password" ng-model="usersFormData.password">
-	        </div>
-	        <div class="form-group">	            
-	            <input class="form-control" placeholder="Mobile" ng-model="usersFormData.mobile">
-	        </div>
-	        <div class="form-group">	            
-	            <input class="form-control" placeholder="EmailId" ng-model="usersFormData.emailId">
-	        </div>
-	        <div class="form-group">	            
-	            <select ng-model="usersFormData.role" class="form-group">
-	            	<option ng-repeat="userRole in userRolesList" value="{{userRole.id}}">{{userRole.roleName}}</option>
-	            </select>
-	        </div>
-	        <div class="form-group">	            
-	            <input class="form-control" placeholder="HouseNo" ng-model="usersFormData.houseNumber">
-	        </div>
-	        <div class="form-group">	            
-	            <input class="form-control" placeholder="Street" ng-model="usersFormData.street">
-	        </div>
-	        <div class="form-group">	            
-	            <input class="form-control" placeholder="Area" ng-model="usersFormData.area">
-	        </div>
-	        <div class="form-group">	            
-	            <input class="form-control" placeholder="Landmark" ng-model="usersFormData.landmark">
-	        </div>
-	        <div class="form-group">
-	            <input class="form-control" placeholder="City" ng-model="usersFormData.city">
-	        </div>
-	        <div class="form-group">	            
-	            <input class="form-control" placeholder="Pincode" ng-model="usersFormData.pincode">
-	        </div>
-	        {{usersFormEditFlag}}
+	        <div class="col-md-6">
+		        <div class="form-group" ng-hide="usersFormEditFlag">	            
+		            <input class="form-control" placeholder="User name" ng-model="usersFormData.userName">
+		        </div>
+		        <div class="form-group" >
+		            <input class="form-control" placeholder="Password" type="password" ng-model="usersFormData.password">
+		        </div>
+		        <div class="form-group">	            
+		            <input class="form-control" placeholder="Mobile" ng-model="usersFormData.mobile">
+		        </div>
+		        <div class="form-group">	            
+		            <input class="form-control" placeholder="EmailId" ng-model="usersFormData.emailId">
+		        </div>
+		        <div class="form-group">	            
+		            <select ng-model="usersFormData.role" class="form-control">
+		            	<option ng-repeat="userRole in userRolesList" value="{{userRole.id}}">{{userRole.roleName}}</option>
+		            </select>
+		        </div>
+		        <div class="form-group">	            
+		            <input class="form-control" placeholder="HouseNo" ng-model="usersFormData.houseNumber">
+		        </div>
+		    </div>
+		    <div class="col-md-6">
+		        <div class="form-group">	            
+		            <input class="form-control" placeholder="Street" ng-model="usersFormData.street">
+		        </div>
+		        <div class="form-group">	            
+		            <input class="form-control" placeholder="Area" ng-model="usersFormData.area">
+		        </div>
+		        <div class="form-group">	            
+		            <input class="form-control" placeholder="Landmark" ng-model="usersFormData.landmark">
+		        </div>
+		        <div class="form-group">
+		            <input class="form-control" placeholder="City" ng-model="usersFormData.city">
+		        </div>
+		        <div class="form-group">	            
+		            <input class="form-control" placeholder="Pincode" ng-model="usersFormData.pincode">
+		        </div>
+		    </div>
 	        <button type="button" class="btn btn-primary" ng-show="!usersFormEditFlag" ng-click="createUser()">Submit</button>
 	        <button type="button" class="btn btn-primary" ng-show="usersFormEditFlag" ng-click="updateUser()">Update</button>
         	<button type="reset" class="btn btn-default">Reset</button>
@@ -83,11 +86,14 @@ private long landlineNumber; -->
 	                </tr>
 	            </thead>
 	            <tbody>
-	            	<tr ng-repeat="user in usersList">
-						<td ng-bind="user.name"></td>
+	            	<tr ng-repeat="user in userList">
+	            		<td ng-bind="$index+1"></td>
+						<td ng-bind="user.userName"></td>
 						<td ng-bind="user.mobile"></td>
 						<td ng-bind="user.emailId"></td>
 						<td>
+	   						<a class="btn btn-primary btn-xs" ng-click="editUser(user.id)" ng-show="globalConfig.rolesPermissions.users_update"><span class="fa fa-edit"></span></a>
+	            			<!-- <a class="btn btn-danger btn-xs" ng-click="deleteUser(user.id)"  ng-show="globalConfig.rolesPermissions.users_delete"><span class="fa fa-minus"></span></a> -->
 						</td>
 	            	</tr>
 	            </tbody>

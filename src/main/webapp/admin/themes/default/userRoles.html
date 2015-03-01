@@ -67,7 +67,8 @@
 						<td><input type="checkbox" ng-model="userRolesFormData.users_delete"></td>
 					</tr>
 		        </table>
-		        <input type="button" ng-click="submitUserRolesForm()" value="Submit">
+		        <input type="button" ng-click="submitUserRolesForm()" value="Submit" ng-show="!usersRolesFormShowFlag" class="btn">
+		        <input type="button" ng-click="updateUserRolesForm()" value="Update" ng-show="usersRolesFormEditFlag" class="btn">
 			</div>
 		</form>
 	</div>

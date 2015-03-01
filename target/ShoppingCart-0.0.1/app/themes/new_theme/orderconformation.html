@@ -12,15 +12,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Potato</td>
-                    <td>200 gm</td>
-                    <td>4</td>
-                    <td>5%</td>
-                    <td>100</td>
+                <tr ng-repeat="product in cartProducts">
+                    <td ng-bind="$index+1"></td>
+                    <td ng-bind="product.productNameEng"></td>
+                    <td ng-bind="product.productUnitDetails[0].weight"></td>
+                    <td ng-bind="product.inCartQuantity"></td>
+                    <td ng-bind="product.discount"></td>
+                    <td ng-bind="product.discoutAmout"></td>
                 </tr>
-                <tr>
+                <!-- <tr>
                     <td>2</td>
                     <td>Potato</td>
                     <td>200 gm</td>
@@ -35,7 +35,7 @@
                     <td>4</td>
                     <td>5%</td>
                     <td>100</td>
-                </tr>
+                </tr> -->
             </tbody>
         </table>
         <div class="text-right">
@@ -45,7 +45,7 @@
         </div>
         <input type="hidden" value="orderId">
         <input type="hidden" value="transactionStatus">
-        <a href="" class="pull-right"><button type="button" class="btn btn-primary btn-lg ">Confirm Order</button></a>
+        <a href="" class="pull-right"><button type="button" class="btn btn-primary btn-lg " ng-click="confirmOrder()">Confirm Order</button></a>
         
     </div>
 </div>
